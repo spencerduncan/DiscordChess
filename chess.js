@@ -1,6 +1,15 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
+fs = require('fs');
+
+fs.readFile('./token', 'utf8', function (err, data){
+    if (err){
+            return console.log(err);
+    }
+    client.login(data);
+});
+
 client.on('ready', () => {
     console.log('I am ready!');
 });
@@ -10,5 +19,3 @@ client.on('message', message => {
         message.reply('pong');
     }
 });
-
-client.login('MzM1OTE1NzcwMzI2NDE3NDI5.DEwtfg.D1ncgfTl6ggndD7R6z33ce3Rues');
