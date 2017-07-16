@@ -18,13 +18,13 @@ client.on('ready', () => {
 
 
 client.on('message', message => {
-    if (message.content === 'ping') {
+    if (message.content === '!ping') {
         message.reply('```' + Board.printboard() + '```');
         return;
     }
-    if (message.content.startsWith("move")) {
+    if (message.content.startsWith("!move")) {
         //todo, rewrite to PGN or algebraic
-        let cmd = message.content.slice(5);
+        let cmd = message.content.slice(6);
         if (cmd.length != 4 ){
             message.reply("Bad move length, try again.");
             return;
@@ -39,7 +39,7 @@ client.on('message', message => {
         Board.move(c1, r1, c2, r2);
         message.reply('```' + Board.printboard() + '```');
     }
-    if (message.content === 'reset') {
+    if (message.content === '!reset') {
         Board.reset();
         message.reply('```' + Board.printboard() + '```');
         return;
